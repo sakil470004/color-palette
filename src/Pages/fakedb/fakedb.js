@@ -1,22 +1,18 @@
 // use local storage as your db for now
+
 const addToDb = id => {
     const exists = getDb();
     let color_cart = {};
     if (!exists) {
-        color_cart[id] = 1;
+        color_cart[id] = id;
     }
     else {
         color_cart = JSON.parse(exists);
-        if (color_cart[id]) {
-            const newCount = color_cart[id] + 1;
-            color_cart[id] = newCount;
-        }
-        else {
-            color_cart[id] = 1;
-        }
+        color_cart[id] = id;
     }
     updateDb(color_cart);
 }
+
 const addToDb2 = (id,quantity) => {
     const exists = getDb();
     let color_cart = {};

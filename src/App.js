@@ -6,6 +6,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Bookmarks from './Pages/Bookmarks/Bookmarks';
 
 function App() {
   return (
@@ -13,12 +14,13 @@ function App() {
       <Router>
         <ResponsiveAppBar />
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path='/:colorId' element={<Home />}>
           </Route>
-          <Route path="/color/:colorId" element={<Home />} >
+          <Route path='/' element={<Home />}>
           </Route>
-          {/* <Route path="/cart" element={<Cart />} >
-          </Route> */}
+
+          <Route path="/bookmarks" element={<Bookmarks />} >
+          </Route>
 
         </Routes>
       </Router>
