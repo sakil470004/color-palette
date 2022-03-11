@@ -10,15 +10,17 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // const pages = ['Products', 'Pricing', 'Blog'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ setCreateColor }) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-
+    const navigate = useNavigate();
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
+
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
@@ -33,7 +35,8 @@ const ResponsiveAppBar = () => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, color: 'red', display: { xs: 'none', md: 'flex' } }}
+                        sx={{ mr: 2, color: 'red', cursor: 'pointer', display: { xs: 'none', md: 'flex' } }}
+                        onClick={() => navigate('/')}
                     >
                         MI
                     </Typography>
@@ -89,19 +92,20 @@ const ResponsiveAppBar = () => {
                     >
                         MI
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', alignItems: 'center', justifyContent: 'center' } }}>
                         <Button
-                            onClick={handleCloseNavMenu}
                             sx={{ my: 2, display: 'block' }}
+                            onClick={() => navigate('/')}
                         >
-                            <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>Home</Link>
+                            Home
                         </Button>
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={() => navigate('/bookmarks')}
                             sx={{ my: 2, display: 'block' }}
                         >
-                            <Link style={{ color: 'white', textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }} to='/bookmarks'>Bookmarks</Link>
+                            Bookmarks
                         </Button>
+                     
 
                     </Box>
 

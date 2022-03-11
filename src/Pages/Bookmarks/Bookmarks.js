@@ -11,7 +11,7 @@ function Bookmarks() {
         refreshUI()
     }
     const copyToClipboard = (text) => {
-        navigator.clipboard.writeText(text);
+        navigator.clipboard.writeText(`#${text}`);
     }
     const refreshUI = () => {
         let object = getStoredCart()
@@ -32,7 +32,7 @@ function Bookmarks() {
                         style={{ height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: `#${SC}` }}
                         key={SC}
                     >
-                        hex : {SC}
+                        hex : #{SC}
                         <button
                             style={{ background: `#${SC}`, border: 'none', cursor: 'pointer' }}
                             onClick={() => handleRemove(SC)}

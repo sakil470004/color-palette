@@ -14,7 +14,7 @@ function App() {
       <Router>
         <ResponsiveAppBar />
         <Routes>
-          <Route path='/:colorId' element={<Home />}>
+          <Route path='/:colorId' element={<Home  />}>
           </Route>
           <Route path='/' element={<Home />}>
           </Route>

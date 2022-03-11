@@ -8,7 +8,8 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { addToDb, removeFromDb } from '../fakedb/fakedb';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Alert, Snackbar } from '@mui/material';
+import { Alert, Button, Snackbar } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 function Home() {
@@ -36,8 +37,9 @@ function Home() {
     const [isLockOpen, setIsLockOpen] = useState([false, false, false, false, false])
     const [isStar, setIsStar] = useState([false, false, false, false, false])
 
+
     const copyToClipboard = (text) => {
-        navigator.clipboard.writeText(text);
+        navigator.clipboard.writeText(`#${text}`);
         handleSnackBarClick()
     }
     const handleCurrentColumnColor = (text) => {
@@ -95,7 +97,7 @@ function Home() {
         }
         let url = '/'
         arr.map(ar => {
-            url = `${url}-${ar}`
+            return url = `${url}-${ar}`
         })
         const newArray = url.split('-')
         // remove the 1st element
@@ -120,6 +122,7 @@ function Home() {
             createColor()
         }
     }, [])
+
     return (
         <div>
             <div style={{ width: '100%', height: '93vh', display: 'flex', flex: '1' }}>
@@ -127,7 +130,7 @@ function Home() {
                     <div key={MC}
                         style={{ background: `#${MC}`, width: "100%", height: '100%', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         {(!isSubColorOpen || index !== currentColumn) ? <div>
-                            <p>Hex : {MC}</p>
+                            <p style={{ textAlign: 'center' }}>Hex : #{MC}</p>
                             <div>
                                 <button
                                     style={{ background: `#${MC}`, border: 'none', cursor: 'pointer', }}
@@ -160,13 +163,17 @@ function Home() {
 
                             </div>
                         </div> :
-                            <div>
+                            <div style={{ width: '100%', margin: 'auto' }}>
+                                <Button
+                                    onClick={() => setIsSubColorOpen(false)}
+                                    style={{ border: 'black', width: '100%' }}><CloseIcon style={{ color: 'white' }} /></Button>
                                 {subColors.map(SC => (
-                                    <button style={{ background: `#${SC}`, width: "100%", color: 'white', height: '50px', border: 'none', margin: '2px 0px', cursor: 'pointer' }}
-                                        onClick={() => handleCurrentColumnColor(SC)}
-                                    >
-                                        hex : {SC}
-                                    </button>
+                                    <div style={{ borderRadius: '20px', background: `#${SC}`, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem 0rem', gap: '2px', margin: '0.2rem 0rem' }}>
+
+                                        <span>hex : #{SC}</span>
+
+                                        <ContentCopyIcon onClick={() => handleCurrentColumnColor(SC)} />
+                                    </div>
                                 ))
 
                                 }
