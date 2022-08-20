@@ -10,6 +10,7 @@ import { addToDb, removeFromDb } from '../fakedb/fakedb';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Alert, Button, Snackbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import HomeCss from './Home.module.css'
 
 
 function Home() {
@@ -125,13 +126,13 @@ function Home() {
 
     return (
         <div>
-            <div style={{ width: '100%', height: '93vh', display: 'flex', flex: '1' }}>
+            <div className={HomeCss.mainContainer}>
                 {mainColors.map((MC, index) =>
                     <div key={MC}
-                        style={{ background: `#${MC}`, width: "100%", height: '100%', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        style={{ background: `#${MC}`, }}>
                         {(!isSubColorOpen || index !== currentColumn) ? <div>
                             <p style={{ textAlign: 'center' }}>Hex : #{MC}</p>
-                            <div>
+                            <div >
                                 <button
                                     style={{ background: `#${MC}`, border: 'none', cursor: 'pointer', }}
                                     onClick={createColor}
@@ -168,7 +169,7 @@ function Home() {
                                     onClick={() => setIsSubColorOpen(false)}
                                     style={{ border: 'black', width: '100%' }}><CloseIcon style={{ color: 'white' }} /></Button>
                                 {subColors.map(SC => (
-                                    <div style={{ borderRadius: '20px', background: `#${SC}`, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem 0rem', gap: '2px', margin: '0.2rem 0rem' }}>
+                                    <div style={{ borderRadius: '20px', background: `#${SC}`, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem 0rem', gap: '2px', margin: '0.2rem 0rem' }} key={SC}>
 
                                         <span>hex : #{SC}</span>
 

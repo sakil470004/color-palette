@@ -29,7 +29,7 @@ function Bookmarks() {
                 storedColor.map(SC =>
 
                     <div
-                        style={{ height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: `#${SC}` }}
+                        style={{ height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: `#${SC}`, borderRadius: '1rem', margin: '5px 10px' }}
                         key={SC}
                     >
                         hex : #{SC}
